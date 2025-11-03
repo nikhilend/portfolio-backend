@@ -1,6 +1,6 @@
 import Contact from '../Model/Contact.js';
 
-const insertContact = async (req, res) => {
+export const insertContact = async (req, res) => {
   try {
     const contact = req.contact;
     await Contact.create(contact);

@@ -24,8 +24,8 @@ app.delete("/project/:id", (req, res)=> { deleteData(req, res)})
 
 app.post("contact", (req,res)=> insertContact(req, res))
 
-// app.listen(process.env.PORT, ()=> {
-//     console.log("server is listening at port : ", process.env.PORT)
-// })
+app.listen(5000, ()=> {
+    console.log("server is listening at port : ", 5000)
+})
 
-module.exports = app
+// module.exports = app
