@@ -20,7 +20,7 @@ export const getData = async (req, res) => {
     const projects = await Projects.find();
     res.json({projects, success: true});
   } catch (err) {
-    res.status(500).json({ message: 'Server Error' });
+    res.status(500).json({ message: 'Server Error', detail: err });
   }
 };
 
