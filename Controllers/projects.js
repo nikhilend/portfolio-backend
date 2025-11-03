@@ -2,8 +2,8 @@ import Projects from '../Model/Projects.js';
 
 export const insertData = async (req, res) => {
   try {
-    const projects = req.projects;
-    await Projects.insertMany(projects);
+    const project = req.body;
+    await Projects.create(project);
 
     res.status(200).send({message: "Inserted Successfully" ,success : true})
 
