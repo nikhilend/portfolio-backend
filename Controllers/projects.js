@@ -5,13 +5,10 @@ export const insertData = async (req, res) => {
     const project = req.body;
     await Projects.create(project);
 
-    res.status(200).send({message: "Inserted Successfully" ,success : true})
+    res.status(200).json({message: "Inserted Successfully" ,success : true})
 
   } catch (err) {
-    res.status(401).send({message: 'Error inserting data:', err})
-
-  } finally {
-    process.exit();
+    res.status(401).json({message: 'Error inserting data:', err})
   }
 };
 
@@ -30,7 +27,7 @@ export const updateData = async (req, res)=> {
     const updateData = req.body;      // new data from request body
 
     // Find the project and update
-    const updatedProject = await Project.findOneAndUpdate(
+    const updatedProject = await Projects.findOneAndUpdate(
       { id: id },                     // match project by id (not _id)
       { $set: updateData },           // apply updates
       { new: true }                   // return the updated document
@@ -45,7 +42,7 @@ export const updateData = async (req, res)=> {
       updatedProject
     });
   } catch (err) {
-    res.status(500).json({ message: 'Server Error', err });
+    res.status(500).json({ message: 'Server Error', "err" : err });
   }
 }
 
@@ -54,7 +51,7 @@ export const deleteData = async (req, res)=> {
     const { id } = req.params;        // project id from URL
 
     // Find the project and update
-    const deletedProject = await Project.findOneAndDelete(
+    const deletedProject = await Projects.findOneAndDelete(
       { id: id }                     // match project by id (not _id)
     );
 

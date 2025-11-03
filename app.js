@@ -1,6 +1,6 @@
 import express from 'express'
 import projects from './Data/Projects.js'
-import {insertData, getData, updateData} from "./Controllers/projects.js"
+import {insertData, getData, updateData , deleteData} from "./Controllers/projects.js"
 import {insertContact} from "./Controllers/contactController.js"
 import connectDB from './utils/mongoDB.js';
 import 'dotenv/config';
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/projects",(req,res) => { getData(req,res)})
-app.post("/projects", (req, res) => {insertData(projects, req, res)})
+app.post("/projects", (req, res) => {insertData(req, res)})
 app.put("/project/:id", (req, res)=> { updateData(req, res)})
 app.delete("/project/:id", (req, res)=> { deleteData(req, res)})
 
