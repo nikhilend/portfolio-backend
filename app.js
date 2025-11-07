@@ -4,17 +4,19 @@ import {insertData, getData, updateData , deleteData} from "./Controllers/projec
 import {insertContact} from "./Controllers/contactController.js"
 import connectDB from './utils/mongoDB.js';
 import 'dotenv/config';
+import cors from 'cors'
 
 const app = new express();
-app.use(express.json());
-
-let isConnected = false;
 
 app.use(cors({
   origin: "http://localhost:5173",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
+
+app.use(express.json());
+
+let isConnected = false;
 
 app.use((req, res, next) => {
     if(!isConnected) {
