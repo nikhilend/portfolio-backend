@@ -22,6 +22,10 @@ export const getData = async (req, res) => {
 };
 
 export const updateData = async (req, res)=> {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  
   try {
     const { id } = req.params;        // project id from URL
     const updateData = req.body;      // new data from request body
