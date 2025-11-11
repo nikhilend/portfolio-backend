@@ -18,6 +18,8 @@ const projectSchema = new mongoose.Schema({
     projectName: String,
     projectDescription: String,
     src: String,
+    live: String,
+    code: String,
   },
   elements: [elementSchema],
 });

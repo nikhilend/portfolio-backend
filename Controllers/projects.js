@@ -55,11 +55,7 @@ export const deleteData = async (req, res)=> {
     const deletedProject = await Projects.findOneAndDelete(
       { id: id }                     // match project by id (not _id)
     );
-
-    if (!deletedProject) {
-      return res.status(404).json({ message: 'Project not found' });
-    }
-
+    
     res.json({
       message: 'Project updated',
       success : true
