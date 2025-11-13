@@ -4,7 +4,8 @@ const contactSchema = new mongoose.Schema({
   id: Number,
   name: String,
   email: String,
-  message: String
+  message: String,
+  dateTime : String
 });
 
 const Contact = mongoose.model('Contact', contactSchema);
