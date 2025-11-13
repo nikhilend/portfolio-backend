@@ -7,11 +7,10 @@ export const insertContact = async (req, res) => {
 
     res.status(200).send({message: "Inserted Successfully" ,success : true})
 
-  } catch (err) {
+  } catch (err) 
+  {
     res.status(401).send({message: 'Error inserting data:', err})
 
-  } finally {
-    process.exit();
   }
 };
 

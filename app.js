@@ -1,5 +1,4 @@
 import express from 'express'
-import projects from './Data/Projects.js'
 import {insertData, getData, updateData , deleteData} from "./Controllers/projects.js"
 import {insertContact} from "./Controllers/contactController.js"
 import connectDB from './utils/mongoDB.js';
@@ -30,7 +29,7 @@ app.post("/projects", (req, res) => {insertData(req, res)})
 app.put("/project/:id", (req, res)=> { updateData(req, res)})
 app.delete("/project/:id", (req, res)=> { deleteData(req, res)})
 
-app.post("contact", (req,res)=> insertContact(req, res))
+app.post("/contact", (req,res)=> insertContact(req, res))
 
 // app.listen(5000, ()=> {
 //     console.log("server is listening at port : ", 5000)
