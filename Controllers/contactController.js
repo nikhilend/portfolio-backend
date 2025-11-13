@@ -2,7 +2,7 @@ import Contact from '../Model/Contact.js';
 
 export const insertContact = async (req, res) => {
   try {
-    const contact = req.contact;
+    const contact = req.body;
     await Contact.create(contact);
 
     res.status(200).send({message: "Inserted Successfully" ,success : true})
