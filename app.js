@@ -8,7 +8,7 @@ import cors from 'cors'
 const app = new express();
 
 app.use(cors({
-  origin: ["http://localhost:5173", "https://react-portfolio-seven-beryl.vercel.app/"],
+  origin: ["http://localhost:5173", "https://react-portfolio-seven-beryl.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
