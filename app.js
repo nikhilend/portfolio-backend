@@ -7,14 +7,22 @@ import cors from 'cors'
 
 const app = new express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://react-portfolio-seven-beryl.vercel.app"
+];
+
 app.use(cors({
-  origin: ["http://localhost:5173", "https://react-portfolio-seven-beryl.vercel.app"],
+  origin: allowedOrigins,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
 }));
 
-app.use(express.json());
 app.options("*", cors());
+
+app.use(express.json());
+
 
 let isConnected = false;
 
