@@ -18,18 +18,15 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/projects",(req,res) => {
-    if (!setCors(req, res)) return;
-   getData(req,res)
-  })
-app.post("/projects", (req, res) => {insertData(req, res)})
-app.put("/project/:id", (req, res)=> { updateData(req, res)})
-app.delete("/project/:id", (req, res)=> { deleteData(req, res)})
+app.get("/projects",(req,res) => {if (!setCors(req, res)) return; getData(req,res)})
+app.post("/projects", (req, res) => { if (!setCors(req, res)) return; insertData(req, res)})
+app.put("/project/:id", (req, res)=> { if (!setCors(req, res)) return; updateData(req, res)})
+app.delete("/project/:id", (req, res)=> { if (!setCors(req, res)) return; deleteData(req, res)})
 
-app.post("/contact", (req,res)=> insertContact(req, res))
+app.post("/contact", (req,res)=> {if(!setCors(req, res)) return; insertContact(req, res)})
 
 // app.listen(5000, ()=> {
-//     console.log("server is listening at port : ", 5000)
+//     console.log("server is listening at port : ", 5000) 
 // })
 
 module.exports = app
