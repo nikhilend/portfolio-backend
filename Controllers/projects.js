@@ -15,7 +15,6 @@ export const insertData = async (req, res) => {
 };
 
 export const getData = async (req, res) => {
-  if (!setCors(req, res)) return;
   try {
     const projects = await Projects.find();
     res.json({projects, success: true});

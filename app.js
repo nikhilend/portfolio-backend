@@ -3,24 +3,9 @@ import {insertData, getData, updateData , deleteData} from "./Controllers/projec
 import {insertContact} from "./Controllers/contactController.js"
 import connectDB from './utils/mongoDB.js';
 import 'dotenv/config';
-import cors from 'cors'
+import { setCors } from './utils/corsHandler.js';
 
 const app = new express();
-
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://react-portfolio-seven-beryl.vercel.app"
-];
-
-app.use(cors({
-  origin: allowedOrigins,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
-}));
-
-app.options("*", cors());
-
 app.use(express.json());
 
 
@@ -33,7 +18,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/projects",(req,res) => { getData(req,res)})
+app.get("/projects",(req,res) => {
+    if (!setCors(req, res)) return;
+   getData(req,res)
+  })
 app.post("/projects", (req, res) => {insertData(req, res)})
 app.put("/project/:id", (req, res)=> { updateData(req, res)})
 app.delete("/project/:id", (req, res)=> { deleteData(req, res)})
