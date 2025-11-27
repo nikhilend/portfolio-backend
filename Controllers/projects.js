@@ -1,6 +1,8 @@
 import Projects from '../Model/Projects.js';
+import { setCors } from '../utils/corsHandler.js';
 
 export const insertData = async (req, res) => {
+  if (!setCors(req, res)) return;
   try {
     const project = req.body;
     await Projects.create(project);
@@ -22,7 +24,7 @@ export const getData = async (req, res) => {
 };
 
 export const updateData = async (req, res)=> {
-
+  if (!setCors(req, res)) return;
   try {
     const { id } = req.params;        // project id from URL
     const updateData = req.body;      // new data from request body
@@ -48,6 +50,7 @@ export const updateData = async (req, res)=> {
 }
 
 export const deleteData = async (req, res)=> {
+  if (!setCors(req, res)) return;
   try {
     const { id } = req.params;        // project id from URL
 

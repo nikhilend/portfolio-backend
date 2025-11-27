@@ -1,6 +1,8 @@
 import Contact from '../Model/Contact.js';
+import { setCors } from '../utils/corsHandler.js';
 
 export const insertContact = async (req, res) => {
+  if (!setCors(req, res)) return;
   try {
     const contact = req.body;
     await Contact.create(contact);
